@@ -74,10 +74,18 @@ const Game = function(props) {
 
   /* JUMP TO MOVE */
   const jumpTo = function(moveIndex, props) {
-    return props.render({state: Object.assign(props.state, 
-      {
+    if(moveIndex !== 0) {
+      return props.render({state: Object.assign(props.state, {
+          stepNumber: moveIndex,
+          xIsNext: (moveIndex % 2) ? false : true
+        }),
+        render: props.render
+      });
+    }
+
+    return props.render({state: Object.assign(props.state, {
         stepNumber: moveIndex,
-        xIsNext: (moveIndex % 2) ? false : true
+        xIsNext: props.state.startSym === 'X'
       }),
       render: props.render
     });
@@ -86,7 +94,7 @@ const Game = function(props) {
 
   
 
-  /* CONSTANTS INSIDE GAME COMP */
+  /* NON-FUNCTIONS INSIDE GAME COMP */
   const history = props.state.history.slice();
   const curr = history[props.state.stepNumber];
   const winner = calcWinner(curr.squares);
@@ -96,7 +104,7 @@ const Game = function(props) {
     `Next player is: ${props.state.xIsNext ? 'X' : 'O'}`;
 
   const moves = history.map(function(move, moveIndex) {
-    const text = (moveIndex > 0) ? `Move #${moveIndex}` : 'Empty Board'; 
+    const text = (moveIndex > 0) ? `Move #${moveIndex}` : 'NEW GAME'; 
     return (
       <li key={moveIndex}>
         <a href='#' onClick={() => jumpTo(moveIndex, props)}>
@@ -111,16 +119,19 @@ const Game = function(props) {
 
   /* RETURN GAME COMPONENT */
   return (
-    <div className="game">
-      <div className="game-board">
-        <Board state={{
-          squares: curr.squares,
-          handleClick: squareClick(props)
-        }}/>
-      </div>
-      <div className="game-info">
-        <div className='status'>{status}</div>
-        <ol start='0'>{moves}</ol>
+    <div>
+      <a className='home' href='/'>Home</a>
+      <div className="game">
+        <div className="game-board">
+          <Board state={{
+            squares: curr.squares,
+            handleClick: squareClick(props)
+          }}/>
+        </div>
+        <div className="game-info">
+          <div className='status'>{status}</div>
+          <ol className='moves' start='0'>{moves}</ol>
+        </div>
       </div>
     </div>
   );
@@ -134,16 +145,43 @@ Game.propTypes = {
 
 
 
-/* INITIAL RENDER */
-render(Game, {
-  state: {
-    history: [{squares: Array(9).fill(null)}],
-    stepNumber: 0,
-    xIsNext: true
-  },
-  render: render.bind(null, Game)
-});
+/* X OR O */
+const ChooseSymbol = function(props) {
 
+  /* CLICK FUNC */
+  const handleClick = function(startSym) {
+    const xIsNext = startSym === 'X';
+
+    return render(Game, {
+      state: {
+        history: [{squares: Array(9).fill(null)}],
+        stepNumber: 0,
+        startSym,
+        xIsNext
+      },
+      render: render.bind(null, Game)
+    });
+  };
+
+
+
+  /* RETURNS CHOOSESYMBOL COMP*/
+  return (
+    <div className='status'>
+      <h3> Choose symbol </h3>
+      <button className='square' 
+        onClick={() => handleClick('X')}>X</button>
+      <button className='square'
+        onClick={() => handleClick('O')}>O</button>
+    </div>
+  );
+};
+
+
+
+
+/* INITIAL RENDER */
+render(ChooseSymbol);
 
 
 
