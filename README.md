@@ -1,4 +1,4 @@
-#React Tic-tac-toe
+# React Tic-tac-toe
 
 Tic-tac-toe app using the official React tutorial, but using my own
 implementation (pure functions and more).
