@@ -8,14 +8,15 @@ import './../index.css';
 /* SQUARE COMPONENT */
 const Square = function(props) {
   return (
-    <button className="square" onClick={props.state.handleClick}>
-      {props.state.value}
+    <button className="square" onClick={props.handleClick}>
+      {props.value}
     </button>
   );
 }
 
 Square.propTypes = {
-  state: PropTypes.object.isRequired
+  value: PropTypes.string,
+  handleClick: PropTypes.func.isRequired
 };
 
 
