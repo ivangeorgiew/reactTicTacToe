@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-import Game from './components/Game';
+import { Game } from './components/Game';
 
 
 
 
-/* RENDER FUNC */
+/* RENDER */
 const render = function(Comp, props={}) {
   return ReactDOM.render(
     <Comp {...props}/>,
@@ -18,35 +18,36 @@ const render = function(Comp, props={}) {
 
 
 
-/* CHOOSE SYMBOL COMP */
-const ChooseSymbol = function(props) {
-
-  /* CLICK FUNC */
-  const handleClick = function(startSym, vsComp) {
-    const xIsNext = startSym === 'X';
-
-    return render(Game, {
-      state: {
-        history: [{squares: Array(9).fill(null)}],
-        stepNumber: 0,
-        startSym,
-        xIsNext,
-        vsComp
-      },
-      render: render.bind(null, Game)
-    });
-  };
+/* RENDER GAME */
+const renderGame = function(startSym, vsComp) {
+  return render(Game, {
+    history: [{board: Array(9).fill(null)}],
+    stepNumber: 0,
+    startSym,
+    xIsNext: startSym === 'X',
+    vsComp,
+    render: render.bind(this, Game)
+  });
+};
 
 
 
-  /* RETURNS CHOOSE SYMBOL COMP*/
+
+/* INDEX COMP */
+const Index = function(props) {
   return (
     <div className='status'>
-      <h3> Choose symbol </h3>
-      <button className='square' 
-        onClick={() => handleClick('X', true)}>X</button>
+      <h3> Choose symbol vs Player</h3>
       <button className='square'
-        onClick={() => handleClick('O', true)}>O</button>
+        onClick={() => renderGame('X', false)}> X </button>
+      <button className='square'
+        onClick={() => renderGame('O', false)}> O </button>
+
+      <h3>Choose symbol vs Computer</h3>
+      <button className='square'
+        onClick={() => renderGame('X', true)}> X </button>
+      <button className='square'
+        onClick={() => renderGame('O', true)}> O </button>
     </div>
   );
 };
@@ -55,7 +56,7 @@ const ChooseSymbol = function(props) {
 
 
 /* INITIAL RENDER */
-render(ChooseSymbol);
+render(Index);
 
 
 

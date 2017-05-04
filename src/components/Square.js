@@ -14,6 +14,10 @@ const Square = function(props) {
   );
 }
 
+
+
+
+/* PROP TYPES */
 Square.propTypes = {
   value: PropTypes.string,
   handleClick: PropTypes.func.isRequired

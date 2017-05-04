@@ -4,11 +4,20 @@ body {
 }
 
 a {
+  color: #0074D9;
   text-decoration: none;
 }
 
 ol, ul {
   padding-left: 30px;
+}
+
+h3 {
+  clear: both;
+}
+
+h3 + .square {
+  margin-bottom: 30px;
 }
 
 .board-row:after {
@@ -60,7 +69,9 @@ ol, ul {
 }
 
 .home {
-  text-decoration: none;
-  color: black;
   font-size: 50px;
+}
+
+ol > .ng {
+  margin-left: -30px;
 }

@@ -7,46 +7,48 @@ import Square from './Square';
 
 
 
+/* RETURN SQUARE */
+const returnSquare = function(props, i) {
+  return (
+    <Square
+      value={ props.board[i] }
+      handleClick={ () => props.handleClick(i) }
+    />
+  );
+};
+
+
+
+
 /* BOARD COMPONENT */
 const Board = function(props) {
-
-  /* RETURN SQUARE */
-  const returnSquare = function(i) {
-    return (
-      <Square
-        value={ props.squares[i] }
-        handleClick={ () => props.handleClick(i) }
-      />
-    );
-  };
-
-
-
-
-  /* RENDER BOARD */
   return (
     <div>
       <div className="board-row">
-        {returnSquare(0)}
-        {returnSquare(1)}
-        {returnSquare(2)}
+        {returnSquare(props, 0)}
+        {returnSquare(props, 1)}
+        {returnSquare(props, 2)}
       </div>
       <div className="board-row">
-        {returnSquare(3)}
-        {returnSquare(4)}
-        {returnSquare(5)}
+        {returnSquare(props, 3)}
+        {returnSquare(props, 4)}
+        {returnSquare(props, 5)}
       </div>
       <div className="board-row">
-        {returnSquare(6)}
-        {returnSquare(7)}
-        {returnSquare(8)}
+        {returnSquare(props, 6)}
+        {returnSquare(props, 7)}
+        {returnSquare(props, 8)}
       </div>
     </div>
   );
 };
 
+
+
+
+/* PROP TYPES */
 Board.propTypes = {
-  squares: PropTypes.array.isRequired,
+  board: PropTypes.array.isRequired,
   handleClick: PropTypes.func.isRequired
 };
 
