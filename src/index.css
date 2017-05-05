@@ -75,3 +75,31 @@ h3 + .square {
 ol > .ng {
   margin-left: -30px;
 }
+
+
+@media (max-width: 500px){
+  h3 {
+    font-size: 30px;
+  }
+  .status {
+    font-size: 30px;
+    margin-top: 30px;
+  }
+  .game {
+    display: block;
+  }
+  .game-info {
+    margin-left: 0px;
+  }
+  .home {
+    font-size: 30px;
+  }
+  .square {
+    width: 90px;
+    height: 90px;
+  }
+  .ng {
+    display: inline;
+    font-size: 28px;
+  }
+}

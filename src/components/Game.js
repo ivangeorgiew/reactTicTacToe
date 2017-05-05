@@ -94,7 +94,7 @@ const Game = function(props) {
 
   const moves = !props.vsComp ? history.map(function(move, moveIndex) {
     const text = (moveIndex > 0) ? 
-      `Move #${moveIndex}` : 'NEW GAME'; 
+      `Move #${moveIndex}` : 'New Game'; 
     return (
       <li key={moveIndex}>
         <a href='#' onClick={() => jumpTo(props, moveIndex)}>
@@ -118,7 +118,7 @@ const Game = function(props) {
 
   return (
     <div>
-      <a className='home' href='/'>Home</a>
+      <a className='home' href='/reactTicTacToe/'>Home</a>
       <div className="game">
         <div className="game-board">
           <Board 
