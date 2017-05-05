@@ -5,6 +5,8 @@ implementation (pure functions and more).
 
 Added functionality needed for the FCC assignment.
 
+https://ivangeorgiew.github.io/reactTicTacToe/
+
 ### Installation
 
 1) `cd /*your directory*/`
