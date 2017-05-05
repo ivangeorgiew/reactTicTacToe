@@ -11,5 +11,5 @@ https://ivangeorgiew.github.io/reactTicTacToe/
 
 1) `cd /*your directory*/`
 2) `git clone https://github.com/ivangeorgiew/reactTicTacToe.git`
-3) `yarn add`
+3) `yarn install`
 4) `yarn start`

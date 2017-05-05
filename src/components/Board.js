@@ -8,7 +8,7 @@ import Square from './Square';
 
 
 /* RETURN SQUARE */
-const returnSquare = function(props, i) {
+function returnSquare (props, i) {
   return (
     <Square
       value={ props.board[i] }
@@ -21,7 +21,7 @@ const returnSquare = function(props, i) {
 
 
 /* BOARD COMPONENT */
-const Board = function(props) {
+function Board (props) {
   return (
     <div>
       <div className="board-row">

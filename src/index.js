@@ -8,7 +8,7 @@ import { Game } from './components/Game';
 
 
 /* RENDER */
-const render = function(Comp, props={}) {
+function render (Comp, props={}) {
   return ReactDOM.render(
     <Comp {...props}/>,
     document.getElementById('root')
@@ -19,7 +19,7 @@ const render = function(Comp, props={}) {
 
 
 /* RENDER GAME */
-const renderGame = function(startSym, vsComp) {
+function renderGame (startSym, vsComp) {
   return render(Game, {
     history: [{board: Array(9).fill(null)}],
     stepNumber: 0,
@@ -34,7 +34,7 @@ const renderGame = function(startSym, vsComp) {
 
 
 /* INDEX COMP */
-const Index = function(props) {
+function Index (props) {
   return (
     <div className='status'>
       <h3> Choose symbol vs Player</h3>
@@ -76,7 +76,9 @@ render(Index);
 /* 
  * import MyInput from './components/MyInput.js';
  * render(MyInput, {
- *   state: {name: 'Marko', email: 'marko@abv.bg', password:''},
- *   render
+ *   name: 'Marko',
+ *   email: 'marko@abv.bg',
+ *   password: '',
+ *   render: render.bind(this, MyInput)
  * });
  */

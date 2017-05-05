@@ -1,46 +1,52 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MyInput = function(props) {
-  const handleChange = function(field, event) {
-    return props.render(MyInput, {
-      state: Object.assign(
-        props.state,
-        {[field]: event.target.value}
-      ),
-      render: props.render
-    });
+
+
+
+function MyInput (props) {
+
+  function handleChange (field, event) {
+    return props.render(Object.assign({...props}, {
+      [field]: event.target.value,
+    }));
   };
 
-  const handleSubmit = function(event) {
+
+
+
+  function handleSubmit (event) {
     event.preventDefault();
     return alert(`Submitted form with such values:
-      name: ${props.state.name},
-      email: ${props.state.email},
-      password: ${props.state.password}
+      name: ${props.name},
+      email: ${props.email},
+      password: ${props.password}
     `);
   };
 
+
+
+
   return (
     <form onSubmit={handleSubmit}>
-      <label>{props.state.name}</label>
+      <label>{props.name}</label>
       <br/>
       <input
         placeholder="Name"
         type='text'
         name='name'
-        value={props.state.name}
+        value={props.name}
         onChange={handleChange.bind(this, 'name')}
       />
       <br/><br/>
 
-      <label>{props.state.email}</label>
+      <label>{props.email}</label>
       <br/>
       <input
         placeholder="Email"
         type='text'
         name='email'
-        value={props.state.email}
+        value={props.email}
         onChange={handleChange.bind(this, 'email')}
       />
       <br/><br/>
@@ -51,7 +57,7 @@ const MyInput = function(props) {
         placeholder='Password'
         type='password'
         name='password'
-        value={props.state.password}
+        value={props.password}
         onChange={handleChange.bind(this, 'password')}
       />
       <br/><br/>
@@ -61,10 +67,17 @@ const MyInput = function(props) {
   );
 };
 
+
+
+
 MyInput.propTypes = {
-  state: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string,
   render: PropTypes.func.isRequired
 }
 
-export default MyInput;
 
+
+
+export default MyInput;

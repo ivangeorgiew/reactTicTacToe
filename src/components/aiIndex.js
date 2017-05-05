@@ -4,14 +4,14 @@ import { calcWinner } from './Game';
 
 
 /* AI INDEX */ 
-const aiIndex = function(props, board) {
+function aiIndex (props, board) {
   const human = props.startSym; 
   const computer = (human === 'X') ? 'O' : 'X';
 
   if(calcWinner(props, board))
     return null;
 
-  const forCycle = function(i, board, type, bms, index){
+  function forCycle (i, board, type, bms, index){
     if(i < board.length) {
       if(board[i] !== null)
         return forCycle(i+1, board, type, bms, index);
@@ -40,7 +40,7 @@ const aiIndex = function(props, board) {
     return bms;
   };
 
-  const score = function(board, type) {
+  function score (board, type) {
     if(calcWinner(props, board) === 'Wins Human')
       return 10;
     if(calcWinner(props, board) === 'Wins Computer')

@@ -1,6 +1,9 @@
 import React from 'react';
 
-const ShoppingList = function(props) {
+
+
+
+function ShoppingList (props) {
   return (
     <div className='shopping-list'>
       <h1>Shopping List for {props.name}</h1>
@@ -12,5 +15,8 @@ const ShoppingList = function(props) {
     </div>
   );
 };
+
+
+
 
 export default ShoppingList;

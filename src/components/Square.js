@@ -6,7 +6,7 @@ import './../index.css';
 
 
 /* SQUARE COMPONENT */
-const Square = function(props) {
+function Square (props) {
   return (
     <button className="square" onClick={props.handleClick}>
       {props.value}

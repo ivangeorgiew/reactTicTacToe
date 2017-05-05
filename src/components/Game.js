@@ -8,7 +8,7 @@ import aiIndex from './aiIndex';
 
 
 /* CALC WINNER */
-const calcWinner = function(props, board) {
+function calcWinner (props, board) {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -42,7 +42,7 @@ const calcWinner = function(props, board) {
 
 
 /* CLICK ON A SQUARE */
-const squareClick = function(props, i) {
+function squareClick (props, i) {
   const history = props.history.slice(0, props.stepNumber + 1);
   const curr = history[history.length - 1];
   const board = curr.board.slice();
@@ -65,7 +65,7 @@ const squareClick = function(props, i) {
 
 
 /* JUMP TO MOVE */
-const jumpTo = function(props, moveIndex) {
+function jumpTo (props, moveIndex) {
   const xIsNext = (moveIndex === 0) ? props.startSym === 'X' :
     (props.startSym !== 'X' ? moveIndex % 2 !== 0 : moveIndex % 2 === 0);
 
@@ -79,15 +79,18 @@ const jumpTo = function(props, moveIndex) {
 
 
 /* GAME COMPONENT */
-const Game = function(props) {
-
+function Game (props) {
   const history = props.history.slice();
   const curr = history[props.stepNumber];
   const winner = calcWinner(props, curr.board);
 
-  const newGame = () => (
-    <a className='ng' href='#' onClick={() => jumpTo(props, 0)}>NEW GAME</a>
-  );
+  function newGame () {
+    return (
+      <a className='ng' href='#' onClick={() => jumpTo(props, 0)}>
+        New Game
+      </a>
+    );
+  };
 
   const status = winner ? winner : (props.vsComp ? newGame() : 
     `Next is: ${props.xIsNext ? 'X' : 'O'}`);
@@ -95,6 +98,7 @@ const Game = function(props) {
   const moves = !props.vsComp ? history.map(function(move, moveIndex) {
     const text = (moveIndex > 0) ? 
       `Move #${moveIndex}` : 'New Game'; 
+
     return (
       <li key={moveIndex}>
         <a href='#' onClick={() => jumpTo(props, moveIndex)}>

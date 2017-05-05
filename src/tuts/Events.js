@@ -1,6 +1,9 @@
 import React from 'react';
 
-const Child = function(props) {
+
+
+
+function Child (props) {
   return (
     <div>
       <div>ChildComponent</div>
@@ -9,16 +12,18 @@ const Child = function(props) {
   );
 };
 
-const Parent = function(props) {
-  const performMagic = function() {
-    return alert('TADAAAH');
-  };
 
+
+
+function Parent (props) {
   return (
     <div>
-      <Child sup={performMagic} />
+      <Child sup={()=>alert('TADAAAH')} />
     </div>
   );
 };
+
+
+
 
 export default Parent;
