@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './../index.css';
 
 import Board from './Board';
-import abc from './algo';
+import aiIndex from './aiIndex';
 
 
 
@@ -111,7 +111,7 @@ const Game = function(props) {
   if(props.vsComp && 
      props.stepNumber % 2 !== 0 && 
      props.stepNumber < 9) 
-    return squareClick(props, abc(props, curr.board));
+    return squareClick(props, aiIndex(props, curr.board));
 
 
 
