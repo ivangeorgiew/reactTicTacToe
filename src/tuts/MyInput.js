@@ -1,32 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+export default MyInput;
 
 
 
+
+/* TYPING */
+function handleChange (props, field, event) {
+  return props.render(Object.assign({...props}, {
+    [field]: event.target.value,
+  }));
+};
+
+
+
+
+/* ON SUBMIT */
+function handleSubmit (event) {
+  event.preventDefault();
+  return alert(`Submitted form with such values:
+    name: ${props.name},
+    email: ${props.email},
+    password: ${props.password}
+  `);
+};
+
+
+
+
+/* PROP TYPES */
+MyInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string,
+  render: PropTypes.func.isRequired
+}
+
+/* MYINPUT COMP */
 function MyInput (props) {
-
-  function handleChange (field, event) {
-    return props.render(Object.assign({...props}, {
-      [field]: event.target.value,
-    }));
-  };
-
-
-
-
-  function handleSubmit (event) {
-    event.preventDefault();
-    return alert(`Submitted form with such values:
-      name: ${props.name},
-      email: ${props.email},
-      password: ${props.password}
-    `);
-  };
-
-
-
-
   return (
     <form onSubmit={handleSubmit}>
       <label>{props.name}</label>
@@ -36,7 +48,7 @@ function MyInput (props) {
         type='text'
         name='name'
         value={props.name}
-        onChange={handleChange.bind(this, 'name')}
+        onChange={handleChange.bind(this, props, 'name')}
       />
       <br/><br/>
 
@@ -47,7 +59,7 @@ function MyInput (props) {
         type='text'
         name='email'
         value={props.email}
-        onChange={handleChange.bind(this, 'email')}
+        onChange={handleChange.bind(this, props, 'email')}
       />
       <br/><br/>
 
@@ -58,7 +70,7 @@ function MyInput (props) {
         type='password'
         name='password'
         value={props.password}
-        onChange={handleChange.bind(this, 'password')}
+        onChange={handleChange.bind(this, props, 'password')}
       />
       <br/><br/>
 
@@ -66,18 +78,3 @@ function MyInput (props) {
     </form>
   );
 };
-
-
-
-
-MyInput.propTypes = {
-  name: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string,
-  render: PropTypes.func.isRequired
-}
-
-
-
-
-export default MyInput;

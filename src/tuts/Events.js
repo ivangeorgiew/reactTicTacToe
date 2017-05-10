@@ -1,9 +1,12 @@
 import React from 'react';
 
+export default Parent;
 
 
 
-function Child (props) {
+
+/* CHILP COMP */
+function Child(props) {
   return (
     <div>
       <div>ChildComponent</div>
@@ -15,15 +18,11 @@ function Child (props) {
 
 
 
-function Parent (props) {
+/* PARENT COMP */
+function Parent(props) {
   return (
     <div>
       <Child sup={()=>alert('TADAAAH')} />
     </div>
   );
 };
-
-
-
-
-export default Parent;

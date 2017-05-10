@@ -8,7 +8,7 @@ import { Game } from './components/Game';
 
 
 /* RENDER */
-function render (Comp, props={}) {
+function render(Comp, props={}) {
   return ReactDOM.render(
     <Comp {...props}/>,
     document.getElementById('root')
@@ -19,7 +19,7 @@ function render (Comp, props={}) {
 
 
 /* RENDER GAME */
-function renderGame (startSym, vsComp) {
+function renderGame(startSym, vsComp) {
   return render(Game, {
     history: [{board: Array(9).fill(null)}],
     stepNumber: 0,
@@ -34,7 +34,7 @@ function renderGame (startSym, vsComp) {
 
 
 /* INDEX COMP */
-function Index (props) {
+function Index(props) {
   return (
     <div className='status'>
       <h3> Choose symbol vs Player</h3>

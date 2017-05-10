@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './../index.css';
-
 import Square from './Square';
+
+export default Board;
 
 
 
 
 /* RETURN SQUARE */
-function returnSquare (props, i) {
+function returnSquare(props, i) {
   return (
     <Square
       value={ props.board[i] }
@@ -21,7 +22,12 @@ function returnSquare (props, i) {
 
 
 /* BOARD COMPONENT */
-function Board (props) {
+Board.propTypes = {
+  board: PropTypes.array.isRequired,
+  handleClick: PropTypes.func.isRequired
+};
+
+function Board(props) {
   return (
     <div>
       <div className="board-row">
@@ -42,17 +48,3 @@ function Board (props) {
     </div>
   );
 };
-
-
-
-
-/* PROP TYPES */
-Board.propTypes = {
-  board: PropTypes.array.isRequired,
-  handleClick: PropTypes.func.isRequired
-};
-
-
-
-
-export default Board;

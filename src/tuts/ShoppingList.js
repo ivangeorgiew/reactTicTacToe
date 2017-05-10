@@ -1,8 +1,11 @@
 import React from 'react';
 
+export default ShoppingList;
 
 
 
+
+/* SHOPPINGLIST COMP */
 function ShoppingList (props) {
   return (
     <div className='shopping-list'>
@@ -15,8 +18,3 @@ function ShoppingList (props) {
     </div>
   );
 };
-
-
-
-
-export default ShoppingList;
